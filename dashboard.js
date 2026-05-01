@@ -6,13 +6,13 @@ const token = localStorage.getItem("token");
 // ❌ no token → go login
 if (!token) {
     alert("Please login first");
-    window.location.href = "/index.html";
+    window.location.href = "index.html";
 }
 
 // 🚪 logout function
 function logout() {
     localStorage.removeItem("token");
-    window.location.href = "/index.html";
+    window.location.href = "index.html";
 }
 async function loadProfile() {
     const token = localStorage.getItem("token");
@@ -22,11 +22,6 @@ async function loadProfile() {
             "token": token
         }
     });
-
-    if (!res.ok) {
-        alert("Failed to load profile");
-        return;
-    }
 
     const data = await res.json();
 
@@ -44,10 +39,6 @@ async function getTasks() {
             }
         });
 
-        if (!res.ok) {
-            showToast("Failed to load tasks ❌", "error");
-            return;
-        }
 
         const tasks = await res.json();
 
@@ -80,7 +71,6 @@ async function getTasks() {
 
     } catch (error) {
         console.error("GET TASK ERROR:", error);
-        showToast("Network error ❌", "error");
     }
 }
 
@@ -90,10 +80,6 @@ async function createTask() {
 
     const title = document.getElementById("taskInput").value.trim();
 
-    if (!title) {
-        showToast("Empty task ❌", "error");
-        return;
-    }
 
     try {
         const res = await fetch(`${API}/tasks/`, {
@@ -105,30 +91,19 @@ async function createTask() {
             body: JSON.stringify({ title })
         });
 
-        if (!res.ok) {
-            showToast("Create failed ❌", "error");
-            return;
-        }
 
         document.getElementById("taskInput").value = "";
-
-        showToast("Created ✔️");
 
         // 🔥 IMPORTANT: wait then refresh
         await getTasks();
 
     } catch (error) {
         console.error(error);
-        showToast("Network error ❌", "error");
     }
 }
 // ❌ DELETE TASK
 async function deleteTask(id) {
 
-    if (!id) {
-        showToast("Invalid ID ❌", "error");
-        return;
-    }
 
     try {
         const res = await fetch(`${API}/tasks/${id}`, {
@@ -138,28 +113,16 @@ async function deleteTask(id) {
             }
         });
 
-        if (!res.ok) {
-            showToast("Delete failed ❌", "error");
-            return;
-        }
-
-        showToast("Deleted ✔️");
-
         // 🔥 IMPORTANT: wait refresh properly
         await getTasks();
 
     } catch (error) {
         console.error(error);
-        showToast("Network error ❌", "error");
     }
 }function enableEdit(id) {
 
     const span = document.getElementById(`task-${id}`);
 
-    if (!span) {
-        showToast("Task not found ❌", "error");
-        return;
-    }
 
     const text = span.innerText;
 
@@ -179,17 +142,8 @@ async function saveEdit(id) {
 
     const input = document.getElementById(`input-${id}`);
 
-    if (!input) {
-        showToast("Input not found ❌", "error");
-        return;
-    }
 
     const newTitle = input.value.trim();
-
-    if (!newTitle) {
-        showToast("Empty title ❌", "error");
-        return;
-    }
 
     try {
         const res = await fetch(`${API}/tasks/${id}`, {
@@ -201,18 +155,11 @@ async function saveEdit(id) {
             body: JSON.stringify({ title: newTitle })
         });
 
-        if (!res.ok) {
-            showToast("Update failed ❌", "error");
-            return;
-        }
-
-        showToast("Updated ✔️");
-
         await getTasks(); // 🔥 refresh safely
 
     } catch (error) {
         console.error(error);
-        showToast("Network error ❌", "error");
+        
     }
 }
 // 🚀 AUTO LOAD
