@@ -6,13 +6,13 @@ const token = localStorage.getItem("token");
 // ❌ no token → go login
 if (!token) {
     alert("Please login first");
-    window.location.href = "login.html";
+    window.location.href = "/index.html";
 }
 
 // 🚪 logout function
 function logout() {
     localStorage.removeItem("token");
-    window.location.href = "login.html";
+    window.location.href = "/index.html";
 }
 async function loadProfile() {
     const token = localStorage.getItem("token");

@@ -25,8 +25,8 @@ async function login() {
 
     alert("Login success ✔️");
 
-    window.location.href = "dashboard.html";
+    window.location.href = "/dashboard.html";
 }
 function goRegister() {
-    window.location.href = "register.html"
+    window.location.href = "/register.html"
 }
