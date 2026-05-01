@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+
+        /* 🔥 HEADER */
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background: #111827;
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* 👤 PROFILE */
+        #profile {
+            background: #1f2937;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* 🔵 primary button */
+        .btn {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn:hover {
+            background: #2563eb;
+        }
+
+        /* 📝 INPUT AREA */
+        .input-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+
+        /* 📋 TASK LIST */
+        ul {
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+            background: #1f2937;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li span {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        /* 💾 edit button */
+        .save-btn {
+    padding: 6px 10px;
+    margin-left: 6px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.save-btn:active {
+    transform: scale(0.95);
+}
+
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+            margin-left: 5px;
+        }
+
+
+        /* ✏️ EDIT INPUT */
+        .edit-input {
+            padding: 6px;
+            border-radius: 6px;
+            border: 2px solid #22c55e;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🔥 Online Notes Dashboard</h1>
+
+<div class="container">
+
+    <!-- PROFILE -->
+    <div id="profile">👤 Profile loading...</div>
+    <button type="button" class="btn" onclick="loadProfile()">Load Profile</button>
+
+    <hr>
+
+    <!-- CREATE TASK -->
+    <div class="input-box">
+        <input id="taskInput" placeholder="Write note...">
+        <button type="button" class="btn" onclick="createTask()">➕ Add</button>
+    </div>
+
+    <!-- TASK LIST -->
+    <ul id="taskList"></ul>
+    <button type="button" class="delete-btn" onclick="logout()">Logout</button>
+
+</div>
+
+
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

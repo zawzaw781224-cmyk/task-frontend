@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+
+    <!-- 📱 Mobile friendly -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 15px;
+        }
+
+        .card {
+            background: #111827;
+            padding: 25px;
+            width: 100%;
+            max-width: 360px;   /* 🔥 important for mobile */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #38bdf8;
+            font-size: 22px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            background: #1f2937;
+            color: white;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .register-btn {
+            background: #22c55e;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .login-btn {
+            background: transparent;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            margin-top: 10px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        /* 📱 SMALL SCREEN OPTIMIZATION */
+        @media (max-width: 480px) {
+            .card {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2> Create Account</h2>
+    <p id="errorMsg" style="color:red "></p>
+    <input id="username" placeholder="username">
+    <input id="password" type="password" placeholder="password">
+
+    <button type="button" class="register-btn" onclick="register()">Register</button>
+
+    <p>Already have an account?</p>
+
+    <button type="button" class="login-btn" onclick="goLogin()">Go to Login</button>
+
+</div>
+
+<script src="register.js"></script>
+
+</body>
+</html>
